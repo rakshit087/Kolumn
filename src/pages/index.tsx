@@ -1,6 +1,9 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
+//Importing Layouts
+import NavBar from '../layouts/Navbar';
+
 const Home: NextPage = () => {
   return (
     <div>
@@ -9,6 +12,7 @@ const Home: NextPage = () => {
         <meta name='Kolumn' content='Publish your articles on Blockchain' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
+      <NavBar />
       <p>Hello World!</p>
     </div>
   );
