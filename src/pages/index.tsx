@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 //Importing Layouts
 import NavBar from '../layouts/Navbar';
+import FrontBox from '../layouts/FrontBox';
 
 const Home: NextPage = () => {
   return (
@@ -13,7 +14,7 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <NavBar />
-      <p>Hello World!</p>
+      <FrontBox />
     </div>
   );
 };
