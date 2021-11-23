@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         poppins: ['Poppins'],
+        merriweather: ['Merriweather'],
       },
       colors: {
         bkgrnd: '#FEFBF3',
