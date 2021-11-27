@@ -2,6 +2,7 @@ import { NextPage } from 'next';
 import Link from 'next/link';
 import React from 'react';
 import ActionButton from '../components/ActionButton';
+import { Web3Service } from '../services/Web3Service';
 
 const NavBar: NextPage = () => {
   return (
@@ -12,7 +13,7 @@ const NavBar: NextPage = () => {
         </Link>
         <ActionButton
           text='Connect'
-          clickHandler={() => console.log('Button clicked')}
+          clickHandler={() : any => Web3Service.connect()}
         />
       </div>
     </div>

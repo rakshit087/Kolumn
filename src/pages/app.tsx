@@ -1,0 +1,20 @@
+import type { NextPage } from 'next';
+import Head from 'next/head';
+//Importing Layouts
+import NavBar from '../layouts/Navbar';
+
+const App: NextPage = () => {
+  return (
+    <div>
+      <Head>
+        <title>Kolumn</title>
+        <meta name='Kolumn' content='Publish your articles on Blockchain' />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
+      <NavBar />
+      <p>You are connected</p>
+    </div>
+  );
+};
+
+export default App;

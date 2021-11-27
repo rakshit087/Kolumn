@@ -1,16 +1,22 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 //Importing Layouts
 import NavBar from '../layouts/Navbar';
 import FrontBox from '../layouts/FrontBox';
-//Importing Web3 Service
+//Improting Web3 Services
 import { Web3Service } from '../services/Web3Service';
 
 const Home: NextPage = () => {
+  const router = useRouter();
+  const [connected, setConnected] = useState<Boolean | Promise<Boolean>>(false);
   useEffect(()=>{
-    Web3Service.init();
+    setConnected(Web3Service.isConnected());
   },[])
+  if(connected == true) router.push({
+    pathname: '/app'
+  })
   return (
     <div>
       <Head>
