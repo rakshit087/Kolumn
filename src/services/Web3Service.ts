@@ -1,20 +1,31 @@
-import Web3 from "web3";
+import { ethers } from "ethers";
+import KolumnArtifact from "../abis/KolumnKontract.json";
 
-let selectedAccount;
 declare let window: any;
+const address = KolumnArtifact.networks[5777].address;
 
 export const Web3Service = {
-  init: async () => {
-    let provider = window.ethereum;
-    if (typeof provider !== "undefined") {
-      //Get accounts and set selected account
-      const accounts = provider.request({ method: "eth_requestAccounts" });
-      selectedAccount = accounts[0];
-      //If selected account is changed
-      window.ethereum.on("accountsChanged", (accounts: Array<string>) => {
-        selectedAccount = accounts[0];
-      });
+  //Check if user is connected to metamask or not
+  isConnected: async () => {
+    if (typeof window.ethereum !== "undefined") {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      try {
+        await signer.getAddress();
+        return true;
+      } catch {
+        return false;
+      }
+    } else {
+      throw Error("Metamask Not Found");
     }
-    const web3 = new Web3(provider);
+  },
+  //Connect to Metamask
+  connect: async () => {
+    if (typeof window.ethereum !== "undefined") {
+      await window.ethereum.request({ method: "eth_requestAccounts" });
+    } else {
+      throw Error("Metamask Not Found");
+    }
   },
 };
