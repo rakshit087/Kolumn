@@ -30,7 +30,7 @@ const App: NextPage = () => {
         <meta name="Kolumn" content="Publish your articles on Blockchain" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavBar />
+      <NavBar connected={connected} />
       <p>You are connected</p>
     </div>
   );
