@@ -10,17 +10,17 @@ export const Web3Service = {
   init: async () => {
     if (typeof window.ethereum !== "undefined") {
       window.ethereum.on("accountsChanged", () => {
-        Router.reload();
+        window.location.reload();
       });
       window.ethereum.on("disconnect", () => {
         console.log("Disconnected");
-        Router.reload();
+        window.location.reload();
       });
       window.ethereum.on("connect", () => {
-        console.log("Connected!");
+        window.location.reload();
       });
       window.ethereum.on("chainChanged", () => {
-        Router.reload();
+        window.location.reload();
       });
     } else {
       throw Error("Metamask Not Found");
