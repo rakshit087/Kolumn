@@ -40,4 +40,11 @@ export const Web3Service = {
       return false;
     }
   },
+  //Get Current Wallet Address
+  getWallet: async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const wallet = await signer.getAddress();
+    return wallet;
+  },
 };
