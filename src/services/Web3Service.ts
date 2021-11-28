@@ -1,4 +1,3 @@
-import Router from "next/router";
 import { ethers } from "ethers";
 import KolumnArtifact from "../abis/KolumnKontract.json";
 
