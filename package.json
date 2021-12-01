@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.4.0",
+    "@tiptap/react": "^2.0.0-beta.95",
+    "@tiptap/starter-kit": "^2.0.0-beta.145",
+    "@uiw/react-md-editor": "^3.8.2",
     "ethers": "^5.5.1",
     "next": "12.0.4",
     "react": "17.0.2",
