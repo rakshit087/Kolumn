@@ -1,4 +1,3 @@
-import { NextPage } from "next";
 import Link from "next/link";
 import React from "react";
 import ActionButton from "../components/ActionButton";
