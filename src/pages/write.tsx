@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 //Importing Layouts and Components
 import NavBar from "../layouts/Navbar";
-import TipTap from "../components/TipTap";
+import Editor from "../components/Editor";
 //Importing Web3 Services
 import { Web3Service } from "../services/Web3Service";
 
@@ -32,7 +32,9 @@ const App: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar connected={connected} />
-      <TipTap />
+      <div className="w-screen px-4 flex justify-center items-center md:px-20 lg:px-40">
+        <Editor />
+      </div>
     </div>
   );
 };
