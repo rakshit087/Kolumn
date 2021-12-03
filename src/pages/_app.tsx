@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
-import "../assets/global.css";
 import "tailwindcss/tailwind.css";
+import "../assets/global.css";
 import { Web3Service } from "../services/Web3Service";
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {

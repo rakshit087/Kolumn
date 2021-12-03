@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.4.0",
+    "@tiptap/extension-placeholder": "^2.0.0-beta.44",
     "@tiptap/react": "^2.0.0-beta.95",
     "@tiptap/starter-kit": "^2.0.0-beta.145",
     "@uiw/react-md-editor": "^3.8.2",
