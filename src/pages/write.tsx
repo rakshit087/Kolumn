@@ -1,12 +1,14 @@
 import type { NextPage } from "next";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 //Importing Layouts and Components
 import NavBar from "../layouts/Navbar";
-import Editor from "../components/Editor";
 //Importing Web3 Services
 import { Web3Service } from "../services/Web3Service";
+
+const MyEditor = dynamic(() => import("../components/Editor"));
 
 const App: NextPage = () => {
   const router = useRouter();
@@ -33,7 +35,7 @@ const App: NextPage = () => {
       </Head>
       <NavBar connected={connected} />
       <div className="w-screen px-4 flex justify-center items-center md:px-20 lg:px-40">
-        <Editor />
+        <MyEditor />
       </div>
     </div>
   );
