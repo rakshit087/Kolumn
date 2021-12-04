@@ -1,8 +1,7 @@
 import { ethers } from "ethers";
-import KolumnArtifact from "../abis/KolumnKontract.json";
+import KolumnArtifact from "../artifacts/src/contracts/KolumnKontract.sol/KolumnKontract.json";
 
 declare let window: any;
-const address = KolumnArtifact.networks[5777].address;
 
 export const Web3Service = {
   //Add Event Listners and check for Metamask
