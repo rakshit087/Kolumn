@@ -8,7 +8,12 @@ import NavBar from "../layouts/Navbar";
 //Importing Web3 Services
 import { Web3Service } from "../services/Web3Service";
 
-const MyEditor = dynamic(() => import("../components/Editor"));
+const MyEditor = dynamic(
+  () => {
+    return import("../components/Editor");
+  },
+  { ssr: false }
+);
 
 const App: NextPage = () => {
   const router = useRouter();

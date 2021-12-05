@@ -12,7 +12,7 @@ const MyEditor = () => {
           time: 1554920381017,
           blocks: [
             {
-              type: "text",
+              type: "paragraph",
               data: {
                 text: "Hello Editor.js",
                 level: 2,
