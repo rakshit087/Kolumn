@@ -2,16 +2,18 @@ import Editor from "@stfy/react-editor.js";
 interface Props {
   id: string;
   className: string;
+  setContent: any;
 }
+
 const MyEditor = (Props: Props) => {
   return (
     <>
       <Editor
         autofocus
         holder={Props.id}
-        onChange={() => console.log("Something is changing!!")}
-        onData={(data) => console.log(data)}
-        onReady={() => console.log("Start!")}
+        onData={(data) => {
+          Props.setContent(JSON.stringify(data));
+        }}
         data={{
           time: Date.now(),
           blocks: [

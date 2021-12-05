@@ -50,7 +50,8 @@ export const Web3Service = {
   postKolumn: async (title: string, content: string) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
-    const contract = new ethers.Contract("0x0", KolumnArtifact.abi, signer);
+    const wallet = await signer.getAddress();
+    const contract = new ethers.Contract(wallet, KolumnArtifact.abi, signer);
     const txResponse = await contract.createKolumn(title, content, Date.now());
     const txRecipt = await txResponse.wait();
     console.log(txRecipt);

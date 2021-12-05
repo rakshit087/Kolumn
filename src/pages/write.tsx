@@ -18,7 +18,8 @@ const MyEditor = dynamic(
 const App: NextPage = () => {
   const router = useRouter();
   const [connected, setConnected] = useState<Boolean>(true);
-
+  const [title, setTitle] = useState<string>("");
+  const [content, setContent] = useState<string>("");
   useEffect(() => {
     Web3Service.isConnected().then((con) => {
       setConnected(con);
@@ -30,7 +31,6 @@ const App: NextPage = () => {
         pathname: "/",
       });
   }, [connected]);
-
   return (
     <div>
       <Head>
@@ -40,11 +40,27 @@ const App: NextPage = () => {
       </Head>
       <NavBar connected={connected} />
       <div className="w-screen px-4 flex flex-col justify-center items-center md:px-20 lg:px-40">
+        {/* Title */}
         <input
           className="w-full max-w-6xl outline-none text-4xl font-merriweather my-10"
           placeholder="Title"
+          onChange={(e) => {
+            setTitle(e.target.value);
+          }}
         ></input>
-        <MyEditor id="main-editor" className="w-full font-poppins" />
+        {/* Text Editor */}
+        <MyEditor
+          id="main-editor"
+          className="w-full font-poppins"
+          setContent={setContent}
+        />
+        <button
+          onClick={() => {
+            Web3Service.postKolumn(title, content);
+          }}
+        >
+          Post
+        </button>
       </div>
     </div>
   );
