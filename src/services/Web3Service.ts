@@ -46,4 +46,13 @@ export const Web3Service = {
     const wallet = await signer.getAddress();
     return wallet;
   },
+
+  postKolumn: async (title: string, content: string) => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract("0x0", KolumnArtifact.abi, signer);
+    const txResponse = await contract.createKolumn(title, content, Date.now());
+    const txRecipt = await txResponse.wait();
+    console.log(txRecipt);
+  },
 };
