@@ -39,8 +39,12 @@ const App: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar connected={connected} />
-      <div className="w-screen px-4 flex justify-center items-center md:px-20 lg:px-40">
-        <MyEditor />
+      <div className="w-screen px-4 flex flex-col justify-center items-center md:px-20 lg:px-40">
+        <input
+          className="w-full max-w-6xl outline-none text-4xl font-merriweather my-10"
+          placeholder="Title"
+        ></input>
+        <MyEditor id="main-editor" className="w-full font-poppins" />
       </div>
     </div>
   );

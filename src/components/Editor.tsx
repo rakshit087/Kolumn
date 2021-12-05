@@ -1,20 +1,24 @@
 import Editor from "@stfy/react-editor.js";
-const MyEditor = () => {
+interface Props {
+  id: string;
+  className: string;
+}
+const MyEditor = (Props: Props) => {
   return (
     <>
       <Editor
         autofocus
-        holder="editorjs-container"
+        holder={Props.id}
         onChange={() => console.log("Something is changing!!")}
         onData={(data) => console.log(data)}
         onReady={() => console.log("Start!")}
         data={{
-          time: 1554920381017,
+          time: Date.now(),
           blocks: [
             {
               type: "paragraph",
               data: {
-                text: "Hello Editor.js",
+                text: "Content of your amazing article ✨",
                 level: 2,
               },
             },
@@ -22,7 +26,7 @@ const MyEditor = () => {
           version: "2.12.4",
         }}
       />
-      <div id="editorjs-container"></div>
+      <div id={Props.id} className={Props.className}></div>
     </>
   );
 };
