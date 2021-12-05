@@ -20,6 +20,7 @@ const App: NextPage = () => {
   const [connected, setConnected] = useState<Boolean>(true);
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
+  const [buttonContent, setButtonContent] = useState<string>("💌");
   useEffect(() => {
     Web3Service.isConnected().then((con) => {
       setConnected(con);
@@ -55,11 +56,20 @@ const App: NextPage = () => {
           setContent={setContent}
         />
         <button
+          className="bg-frgrnd w-14 h-14 text-3xl fixed z-10 rounded-full mx-5 mb-10 md:mx-20 lg:mx-40 md:mb-10 lg:mb-10 transition-all"
           onClick={() => {
-            Web3Service.postKolumn(title, content);
+            if (title.length != 0) Web3Service.postKolumn(title, content);
+            // @TODO:Add a tost here
+            else console.log("Please Enter Tile");
+          }}
+          onMouseEnter={() => {
+            setButtonContent("📨");
+          }}
+          onMouseLeave={() => {
+            setButtonContent("💌");
           }}
         >
-          Post
+          {buttonContent}
         </button>
       </div>
     </div>
