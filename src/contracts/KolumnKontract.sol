@@ -39,4 +39,16 @@ contract KolumnKontract {
         _title = kolumns[_id].title;
         _content = kolumns[_id].content;
     }
+
+    //View Latest Columns
+    function viewLatestKolumns()
+        public
+        view
+        returns (Kolumn[] memory latestKolumns)
+    {
+        for (uint256 i = kolumnKount; i > 0 || i > (kolumnKount - 10); i--) {
+            latestKolumns[i] = kolumns[i];
+        }
+        return latestKolumns;
+    }
 }
