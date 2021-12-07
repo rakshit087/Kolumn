@@ -41,14 +41,22 @@ contract KolumnKontract {
     }
 
     //View Latest Columns
-    function viewLatestKolumns()
-        public
-        view
-        returns (Kolumn[] memory latestKolumns)
-    {
-        for (uint256 i = kolumnKount; i > 0 || i > (kolumnKount - 10); i--) {
-            latestKolumns[i] = kolumns[i];
+    function viewLatestKolumns() public view returns (Kolumn[] memory) {
+        uint256 counter = 0;
+        if (kolumnKount > 10) {
+            Kolumn[] memory _latestKolumns = new Kolumn[](10);
+            for (uint256 i = kolumnKount; i > (kolumnKount - 10); i--) {
+                _latestKolumns[counter] = kolumns[i];
+                counter++;
+            }
+            return _latestKolumns;
+        } else {
+            Kolumn[] memory _latestKolumns = new Kolumn[](kolumnKount);
+            for (uint256 i = kolumnKount; i > 0; i--) {
+                _latestKolumns[counter] = kolumns[i];
+                counter++;
+            }
+            return _latestKolumns;
         }
-        return latestKolumns;
     }
 }
