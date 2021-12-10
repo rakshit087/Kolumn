@@ -9,22 +9,14 @@ const MyEditor = (Props: Props) => {
   return (
     <>
       <Editor
-        autofocus
         holder={Props.id}
         onData={(data) => {
           Props.setContent(JSON.stringify(data));
         }}
+        placeholder="Content of your amazing article ✨"
         data={{
           time: Date.now(),
-          blocks: [
-            {
-              type: "paragraph",
-              data: {
-                text: "Content of your amazing article ✨",
-                level: 2,
-              },
-            },
-          ],
+          blocks: [],
           version: "2.12.4",
         }}
       />

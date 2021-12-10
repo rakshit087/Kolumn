@@ -9,3 +9,7 @@ html {
 .ce-toolbar__content {
   @apply max-w-6xl;
 }
+
+.codex-editor__redactor {
+  padding-bottom: 0 !important;
+}
