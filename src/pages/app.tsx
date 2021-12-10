@@ -14,13 +14,13 @@ const App: NextPage = () => {
   useEffect(() => {
     try {
       Web3Service.init();
+      Web3Service.isConnected().then((con) => {
+        setConnected(con);
+      });
     } catch (err) {
       console.log(err);
     }
-    Web3Service.isConnected().then((con) => {
-      setConnected(con);
-    });
-  }, []);
+  });
   //Set wallet connection status
   useEffect(() => {
     if (connected == false)

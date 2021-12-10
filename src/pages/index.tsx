@@ -16,7 +16,7 @@ const Home: NextPage = () => {
     Web3Service.isConnected().then((con) => {
       setConnected(con);
     });
-  }, []);
+  });
   useEffect(() => {
     if (connected == true)
       router.push({

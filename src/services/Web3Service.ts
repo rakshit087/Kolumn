@@ -5,16 +5,9 @@ declare let window: any;
 
 export const Web3Service = {
   //Add Event Listners and check for Metamask
-  init: async () => {
+  init: () => {
     if (typeof window.ethereum !== "undefined") {
       window.ethereum.on("accountsChanged", () => {
-        window.location.reload();
-      });
-      window.ethereum.on("disconnect", () => {
-        console.log("Disconnected");
-        window.location.reload();
-      });
-      window.ethereum.on("connect", () => {
         window.location.reload();
       });
       window.ethereum.on("chainChanged", () => {
