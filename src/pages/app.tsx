@@ -10,12 +10,18 @@ import { Web3Service } from "../services/Web3Service";
 const App: NextPage = () => {
   const router = useRouter();
   const [connected, setConnected] = useState<Boolean>(true);
-
+  //Initialize Metamask
   useEffect(() => {
+    try {
+      Web3Service.init();
+    } catch (err) {
+      console.log(err);
+    }
     Web3Service.isConnected().then((con) => {
       setConnected(con);
     });
   }, []);
+  //Set wallet connection status
   useEffect(() => {
     if (connected == false)
       router.push({
