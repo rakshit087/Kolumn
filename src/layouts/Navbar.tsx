@@ -11,7 +11,7 @@ const NavBar = (props: Props) => {
   return (
     <div className="w-screen h-20 px-4 flex justify-center items-center border-b border-black bg-bkgrnd md:px-20 lg:px-40 transition-all">
       <div className="w-full h-full  max-w-6xl flex justify-between items-center">
-        <Link href={props.connected ? "/app" : "/"} passHref>
+        <Link href={props.connected ? "/main" : "/"} passHref>
           <p className="text-4xl font-poppins cursor-pointer">Kolumn</p>
         </Link>
         {props.connected ? (

@@ -7,7 +7,7 @@ import NavBar from "../layouts/Navbar";
 //Importing Web3 Services
 import { Web3Service } from "../services/Web3Service";
 
-const App: NextPage = () => {
+const Main: NextPage = () => {
   const router = useRouter();
   const [connected, setConnected] = useState<Boolean>(true);
   //Initialize Metamask
@@ -37,9 +37,15 @@ const App: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar connected={connected} />
-      <p>You are connected</p>
+      <button
+        onClick={() => {
+          Web3Service.getLatestKolumns();
+        }}
+      >
+        View Latest Posts
+      </button>
     </div>
   );
 };
 
-export default App;
+export default Main;

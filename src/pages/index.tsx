@@ -20,7 +20,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     if (connected == true)
       router.push({
-        pathname: "/app",
+        pathname: "/main",
       });
   }, [connected]);
 
