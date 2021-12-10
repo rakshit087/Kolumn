@@ -51,12 +51,23 @@ export const Web3Service = {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(
-      "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "0x361eE705317EEc1aC1EC6ac2275E91c41f687457",
       KolumnArtifact.abi,
       signer
     );
     const txResponse = await contract.createKolumn(title, content, Date.now());
     const txRecipt = await txResponse.wait();
     console.log(txRecipt);
+  },
+
+  getLatestKolumns: async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const contract = new ethers.Contract(
+      "0x361eE705317EEc1aC1EC6ac2275E91c41f687457",
+      KolumnArtifact.abi,
+      provider
+    );
+    const data = await contract.viewLatestKolumns();
+    console.log(data);
   },
 };
