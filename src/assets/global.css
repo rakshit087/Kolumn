@@ -2,6 +2,7 @@
 
 html {
   overflow-x: hidden;
+  @apply font-poppins;
 }
 
 /* For Editor.js */

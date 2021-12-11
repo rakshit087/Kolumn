@@ -13,7 +13,6 @@ const Main: NextPage = () => {
   //Initialize Metamask
   useEffect(() => {
     try {
-      Web3Service.init();
       Web3Service.isConnected().then((con) => {
         setConnected(con);
         if (!con) {

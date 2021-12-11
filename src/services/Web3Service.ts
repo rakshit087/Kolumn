@@ -4,19 +4,6 @@ import KolumnArtifact from "../artifacts/src/contracts/KolumnKontract.sol/Kolumn
 declare let window: any;
 
 export const Web3Service = {
-  //Add Event Listners and check for Metamask
-  init: () => {
-    if (typeof window.ethereum !== "undefined") {
-      window.ethereum.on("accountsChanged", () => {
-        window.location.reload();
-      });
-      window.ethereum.on("chainChanged", () => {
-        window.location.reload();
-      });
-    } else {
-      throw Error("Metamask Not Found");
-    }
-  },
   //Connect to Metamask
   connect: async () => {
     await window.ethereum.request({ method: "eth_requestAccounts" });
@@ -72,6 +59,6 @@ export const Web3Service = {
       provider
     );
     const data = await contract.viewKolumn(id);
-    return data;
+    console.log(data);
   },
 };
