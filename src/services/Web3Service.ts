@@ -39,7 +39,7 @@ export const Web3Service = {
     const wallet = await signer.getAddress();
     return wallet;
   },
-
+  //Post a Kolumn
   postKolumn: async (title: string, content: string) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
@@ -62,5 +62,16 @@ export const Web3Service = {
     );
     const data = await contract.viewLatestKolumns();
     console.log(data);
+  },
+
+  getKolumnByID: async (id: Number) => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const contract = new ethers.Contract(
+      "0x361eE705317EEc1aC1EC6ac2275E91c41f687457",
+      KolumnArtifact.abi,
+      provider
+    );
+    const data = await contract.viewKolumn(id);
+    return data;
   },
 };
