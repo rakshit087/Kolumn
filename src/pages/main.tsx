@@ -16,18 +16,16 @@ const Main: NextPage = () => {
       Web3Service.init();
       Web3Service.isConnected().then((con) => {
         setConnected(con);
+        if (!con) {
+          router.push({
+            pathname: "/",
+          });
+        }
       });
     } catch (err) {
       console.log(err);
     }
   });
-  //Set wallet connection status
-  useEffect(() => {
-    if (connected == false)
-      router.push({
-        pathname: "/",
-      });
-  }, [connected]);
 
   return (
     <div>

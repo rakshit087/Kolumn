@@ -23,14 +23,13 @@ const App: NextPage = () => {
   useEffect(() => {
     Web3Service.isConnected().then((con) => {
       setConnected(con);
+      if (!con) {
+        router.push({
+          pathname: "/",
+        });
+      }
     });
-  }, []);
-  useEffect(() => {
-    if (connected == false)
-      router.push({
-        pathname: "/",
-      });
-  }, [connected]);
+  });
   return (
     <div>
       <Head>

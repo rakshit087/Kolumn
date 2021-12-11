@@ -15,14 +15,13 @@ const Home: NextPage = () => {
   useEffect(() => {
     Web3Service.isConnected().then((con) => {
       setConnected(con);
+      if (con) {
+        router.push({
+          pathname: "/main",
+        });
+      }
     });
   });
-  useEffect(() => {
-    if (connected == true)
-      router.push({
-        pathname: "/main",
-      });
-  }, [connected]);
 
   return (
     <div>
