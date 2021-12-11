@@ -38,10 +38,10 @@ const App: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar connected={connected} />
-      <div className="w-screen px-4 flex flex-col justify-center items-center md:px-20 lg:px-40">
+      <div className="w-screen px-4 flex flex-col justify-center font-merriweather items-center md:px-20 lg:px-40">
         {/* Title */}
         <input
-          className="w-full max-w-6xl outline-none text-4xl font-merriweather my-10"
+          className="w-full max-w-6xl outline-none text-4xl my-10"
           placeholder="Title"
           onChange={(e) => {
             setTitle(e.target.value);
@@ -49,7 +49,7 @@ const App: NextPage = () => {
         ></input>
         {/* Text Editor */}
         <div
-          className="w-full flex flex-col items-center justify-between"
+          className="w-full text-lg leading-7 md:text-xl md:leading-8 flex flex-col items-center justify-between "
           style={{ minHeight: "70vh" }}
         >
           <MyEditor
