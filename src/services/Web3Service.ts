@@ -59,6 +59,6 @@ export const Web3Service = {
       provider
     );
     const data = await contract.viewKolumn(id);
-    console.log(data);
+    return data;
   },
 };

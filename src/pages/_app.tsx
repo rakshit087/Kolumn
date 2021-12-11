@@ -21,7 +21,7 @@ function MyApp({ Component }: AppProps) {
     } else {
       setMeta(false);
     }
-  });
+  }, []);
   return meta == undefined ? (
     <Loading />
   ) : meta == true ? (
