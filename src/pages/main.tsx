@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 //Importing Layouts
 import NavBar from "../layouts/Navbar";
+import Sidebar from "../layouts/Sidebar";
 //Importing Web3 Services
 import { Web3Service } from "../services/Web3Service";
 
@@ -34,13 +35,12 @@ const Main: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar connected={connected} />
-      <button
-        onClick={() => {
-          Web3Service.getLatestKolumns();
-        }}
-      >
-        View Latest Posts
-      </button>
+      <div className="w-screen px-4 flex justify-center md:px-20 lg:px-40">
+        <div className="w-full h-full  max-w-6xl flex justify-between items-center">
+          <div className="w-3/4"></div>
+          <Sidebar />
+        </div>
+      </div>
     </div>
   );
 };
