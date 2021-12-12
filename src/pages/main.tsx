@@ -2,6 +2,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import LinkButton from "../components/LinkButton";
+import LatestKolumns from "../layouts/LatestKolumns";
 //Importing Layouts
 import NavBar from "../layouts/Navbar";
 import Sidebar from "../layouts/Sidebar";
@@ -36,10 +38,15 @@ const Main: NextPage = () => {
       </Head>
       <NavBar connected={connected} />
       <div className="w-screen px-4 flex justify-center md:px-20 lg:px-40">
-        <div className="w-full h-full  max-w-6xl flex justify-between items-center">
-          <div className="w-3/4"></div>
+        <div className="w-full h-full  max-w-6xl flex justify-between">
+          <div className="w-full md:w-[calc(100%-16rem)] lg:w-[calc(100%-18rem)] ">
+            <LatestKolumns />
+          </div>
           <Sidebar />
         </div>
+      </div>
+      <div className="fixed right-0 m-4 z-10 bottom-0  md:hidden">
+        <LinkButton text="Write 📝" link="/write" />
       </div>
     </div>
   );
