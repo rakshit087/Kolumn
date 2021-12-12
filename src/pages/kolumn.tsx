@@ -7,12 +7,21 @@ import NavBar from "../layouts/Navbar";
 //Importing Web3 Services
 import { Web3Service } from "../services/Web3Service";
 import Loading from "../components/Loading";
+import { title } from "process";
+import ActionButton from "../components/ActionButton";
 
 const Kolumn: NextPage = () => {
+  interface KolumnData {
+    id: number;
+    title: string;
+    content: any;
+    date: Date;
+    author: string;
+  }
+
   const router = useRouter();
   const [connected, setConnected] = useState<Boolean>(true);
-  const [title, setTitle] = useState<string | undefined>(undefined);
-  const [content, setContent] = useState<any>(undefined);
+  const [data, setData] = useState<undefined | KolumnData>(undefined);
   useEffect(() => {
     if (!router.isReady) return;
     const kid =
@@ -23,8 +32,13 @@ const Kolumn: NextPage = () => {
       setConnected(con);
       if (con) {
         Web3Service.getKolumnByID(kid).then((kolumn) => {
-          setTitle(kolumn["_title"]);
-          setContent(JSON.parse(kolumn["_content"]));
+          setData({
+            id: parseInt(kolumn.id),
+            title: kolumn.title,
+            content: JSON.parse(kolumn.content),
+            date: new Date(parseInt(kolumn.timestamp)),
+            author: kolumn.author,
+          });
         });
       } else {
         router.push({
@@ -33,7 +47,7 @@ const Kolumn: NextPage = () => {
       }
     });
   }, [router.isReady]);
-  if (title == undefined || content == undefined)
+  if (data == undefined)
     return (
       <div>
         <NavBar connected={connected} />
@@ -49,10 +63,16 @@ const Kolumn: NextPage = () => {
         <div className="w-screen px-4 flex flex-col justify-center items-center md:px-20 lg:px-80 transition-all">
           <div className="max-w-6xl w-full text-lg leading-7 md:leading-8">
             <h1 className="w-full max-w-6xl outline-none text-4xl font-merriweather my-10">
-              {title}
+              {data.title}
             </h1>
-            <Blocks data={content} />
+            <Blocks data={data.content} />
           </div>
+          <ActionButton
+            text="Tip"
+            clickHandler={() => {
+              Web3Service.sendTip(data.author, data.id);
+            }}
+          />
         </div>
       </div>
     );

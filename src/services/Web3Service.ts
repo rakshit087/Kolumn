@@ -2,6 +2,7 @@ import { ethers } from "ethers";
 import KolumnArtifact from "../artifacts/src/contracts/KolumnKontract.sol/KolumnKontract.json";
 
 declare let window: any;
+const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 export const Web3Service = {
   //Connect to Metamask
@@ -31,34 +32,51 @@ export const Web3Service = {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(
-      "0x361eE705317EEc1aC1EC6ac2275E91c41f687457",
+      contractAddress,
       KolumnArtifact.abi,
       signer
     );
-    const txResponse = await contract.createKolumn(title, content, Date.now());
+    const txResponse = await contract.createKolumn(
+      title,
+      content,
+      Date.now().toString()
+    );
     const txRecipt = await txResponse.wait();
     console.log(txRecipt);
   },
 
-  getLatestKolumns: async () => {
+  getLatestKolumns: async (page: Number) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const contract = new ethers.Contract(
-      "0x361eE705317EEc1aC1EC6ac2275E91c41f687457",
+      contractAddress,
       KolumnArtifact.abi,
       provider
     );
-    const data = await contract.viewLatestKolumns();
+    const data = await contract.viewLatestKolumns(page);
     return data;
   },
 
   getKolumnByID: async (id: Number) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const contract = new ethers.Contract(
-      "0x361eE705317EEc1aC1EC6ac2275E91c41f687457",
+      contractAddress,
       KolumnArtifact.abi,
       provider
     );
     const data = await contract.viewKolumn(id);
     return data;
+  },
+
+  sendTip: async (author: string, id: number) => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(
+      contractAddress,
+      KolumnArtifact.abi,
+      signer
+    );
+    const txResponse = await contract.sendTip(author, id);
+    const txRecipt = await txResponse.wait();
+    console.log(txRecipt);
   },
 };
