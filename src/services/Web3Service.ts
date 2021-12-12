@@ -48,7 +48,7 @@ export const Web3Service = {
       provider
     );
     const data = await contract.viewLatestKolumns();
-    console.log(data);
+    return data;
   },
 
   getKolumnByID: async (id: Number) => {
