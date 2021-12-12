@@ -1,13 +1,5 @@
 require("@nomiclabs/hardhat-waffle");
 
-task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
-  const accounts = await hre.ethers.getSigners();
-
-  for (const account of accounts) {
-    console.log(account.address);
-  }
-});
-
 const INFURA_ENDPOINT = process.env.INFURA_ENDPOINT;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 

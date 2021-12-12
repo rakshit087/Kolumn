@@ -20,7 +20,7 @@ describe("Kolumn Kontract", () => {
       let res = await deployedKolumnKontract.createKolumn(
         "Hello World",
         "This is first contract",
-        123456
+        "123456"
       );
       await res.wait();
       let count = await deployedKolumnKontract.kolumnKount();
@@ -37,35 +37,48 @@ describe("Kolumn Kontract", () => {
   });
   describe("Reading Kolumn", () => {
     beforeEach(async () => {
-      await deployedKolumnKontract.createKolumn(
-        "Hello World",
-        "This is first contract",
-        123456
-      );
-      await deployedKolumnKontract.createKolumn(
-        "Hello World 2",
-        "This is second contract",
-        123456
-      );
-      await deployedKolumnKontract.createKolumn(
-        "Hello World 3",
-        "This is third contract",
-        123456
-      );
+      for (let i = 1; i <= 37; i++) {
+        await deployedKolumnKontract.createKolumn(
+          "Hello World " + i.toString(),
+          "This is article no " + i.toString(),
+          123456
+        );
+      }
     });
     it("Getting Kolumn Kount", async () => {
       let count = await deployedKolumnKontract.kolumnKount();
-      expect(count).is.equal(3);
+      expect(count).is.equal(37);
     });
     it("Getting Kolumn by ID", async () => {
       let data = await deployedKolumnKontract.viewKolumn(2);
-      expect(data._title).is.equal("Hello World 2");
+      expect(data.title).is.equal("Hello World 2");
     });
-    it("Getting Latest Kolumns", async () => {
-      let data = await deployedKolumnKontract.viewLatestKolumns();
+    it("Getting Latest Kolumns for first time", async () => {
+      let data = await deployedKolumnKontract.viewLatestKolumns(1);
       console.log(data[0].title);
-      expect(data[0].title).is.equal("Hello World 3");
-      expect(data[1].title).is.equal("Hello World 2");
+      expect(data[0].id).is.equal(37);
+      expect(data[1].id).is.equal(36);
+    });
+    it("Getting Latest Kolumns for second time", async () => {
+      let data = await deployedKolumnKontract.viewLatestKolumns(2);
+      console.log(data[0].title);
+      expect(data[0].id).is.equal(27);
+      expect(data[1].id).is.equal(26);
+      expect(data.length).is.equal(10);
+    });
+    it("Getting Latest Kolumns for third time", async () => {
+      let data = await deployedKolumnKontract.viewLatestKolumns(3);
+      console.log(data[0].title);
+      expect(data[0].id).is.equal(17);
+      expect(data[1].id).is.equal(16);
+      expect(data.length).is.equal(10);
+    });
+    it("Getting Latest Kolumns for fourth time", async () => {
+      let data = await deployedKolumnKontract.viewLatestKolumns(4);
+      console.log(data[0].title);
+      expect(data[0].id).is.equal(7);
+      expect(data[1].id).is.equal(6);
+      expect(data.length).is.equal(7);
     });
   });
 });
