@@ -1,13 +1,15 @@
 // SPDX-License-Identifier: GPL
 pragma solidity ^0.8.0;
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract KolumnKontract {
+contract KolumnKontract is Ownable {
     //Kolumn Structure
     struct Kolumn {
         uint256 id;
         string title;
         string content;
         string timestamp;
+        uint256 tips;
         address payable author;
     }
 
@@ -28,6 +30,7 @@ contract KolumnKontract {
             _title,
             _content,
             _timestamp,
+            0,
             payable(msg.sender)
         );
     }
@@ -68,5 +71,12 @@ contract KolumnKontract {
             }
             return _latestKolumns;
         }
+    }
+
+    //Pay Author
+    function sendTip(address payable _author, uint256 _id) public payable {
+        (bool sent, bytes memory data) = _author.call{value: msg.value}("");
+        require(sent, "Failed to send Ether");
+        kolumns[_id].tips += msg.value;
     }
 }

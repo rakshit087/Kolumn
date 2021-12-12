@@ -81,19 +81,18 @@ describe("Kolumn Kontract", () => {
       expect(data.length).is.equal(7);
     });
   });
+  describe("Transfering Ownership", () => {
+    let KolumnKontract, deployedKolumnKontract, owner, addr1, addr2;
+    beforeEach(async () => {
+      KolumnKontract = await ethers.getContractFactory("KolumnKontract");
+      deployedKolumnKontract = await KolumnKontract.deploy();
+      [owner, addr1, addr2, _] = await ethers.getSigners();
+    });
+    it("Able to transfer owner", async () => {
+      await deployedKolumnKontract.transferOwnership(addr1.address);
+      const newowner = await deployedKolumnKontract.owner();
+      console.log(addr1);
+      expect(newowner).is.equal(addr1.address);
+    });
+  });
 });
-
-//  it("Should return the new greeting once it's changed", async function () {
-//    const Greeter = await ethers.getContractFactory("Greeter");
-//    const greeter = await Greeter.deploy("Hello, world!");
-//    await greeter.deployed();
-
-//    expect(await greeter.greet()).to.equal("Hello, world!");
-
-//    const setGreetingTx = await greeter.setGreeting("Hola, mundo!");
-
-//    // wait until the transaction is mined
-//    await setGreetingTx.wait();
-
-//    expect(await greeter.greet()).to.equal("Hola, mundo!");
-//  });
