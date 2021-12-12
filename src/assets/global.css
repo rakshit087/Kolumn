@@ -2,7 +2,6 @@
 
 html {
   overflow-x: hidden;
-  @apply font-poppins;
 }
 
 /* For Editor.js */
@@ -13,4 +12,14 @@ html {
 
 .codex-editor__redactor {
   padding-bottom: 0 !important;
+}
+
+/* Hide Scrollbar */
+
+div * {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+::-webkit-scrollbar {
+  display: none;
 }
