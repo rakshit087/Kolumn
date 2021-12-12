@@ -37,7 +37,9 @@ const Kolumn: NextPage = () => {
     return (
       <div>
         <NavBar connected={connected} />
-        <Loading />
+        <div className="w-screen flex justify-center items-center h-[calc(100vh-5rem)]">
+          <Loading />
+        </div>
       </div>
     );
   else
