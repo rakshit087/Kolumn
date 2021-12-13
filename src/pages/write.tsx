@@ -10,7 +10,7 @@ import { FiMail } from "react-icons/fi";
 import { Web3Service } from "../services/Web3Service";
 const MyEditor = dynamic(
   () => {
-    return import("../components/Editor");
+    return import("../components/MyEditor");
   },
   { ssr: false }
 );
@@ -55,15 +55,17 @@ const App: NextPage = () => {
           <MyEditor
             id="main-editor"
             className="w-full font-poppins"
+            content={content}
             setContent={setContent}
           />
           <button
             className="flex items-center justify-center my-10 text-3xl transition-colors rounded-full bg-frgrnd text-bkgrnd hover:bg-bkgrnd hover:text-frgrnd w-14 h-14"
             onClick={() => {
-              if (title.length != 0 && content.length != 0)
-                Web3Service.postKolumn(title, content);
-              // @TODO:Add a tost here
-              else console.log("Please Enter Title and Content");
+              console.log(content);
+              // if (title.length != 0 && content.length != 0)
+              //   Web3Service.postKolumn(title, content);
+              // // @TODO:Add a tost here
+              // else console.log("Please Enter Title and Content");
             }}
           >
             <FiMail />

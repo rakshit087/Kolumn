@@ -6,7 +6,7 @@ const Sidebar = () => {
       <div className="w-56 px-4 py-8 my-10 bg-bkgrnd lg:w-60">
         <p className="font-mono text-sm">Write on Konnect</p>
         <ul className="px-8 my-5 font-serif list-disc">
-          <li>Own your Articles</li>
+          <li>Own your Stories</li>
           <li>Earn Crypto!</li>
         </ul>
         <div className="px-4">
