@@ -14,7 +14,7 @@ const Kolumn: NextPage = () => {
     id: number;
     title: string;
     content: any;
-    date: Date;
+    time: Date;
     author: string;
   }
 
@@ -35,7 +35,7 @@ const Kolumn: NextPage = () => {
             id: parseInt(kolumn.id),
             title: kolumn.title,
             content: JSON.parse(kolumn.content),
-            date: new Date(parseInt(kolumn.timestamp)),
+            time: new Date(parseInt(kolumn.timestamp)),
             author: kolumn.author,
           });
         });
@@ -66,12 +66,24 @@ const Kolumn: NextPage = () => {
             </h1>
             <Blocks data={data.content} />
           </div>
-          <ActionButton
-            text="Tip"
-            clickHandler={() => {
-              Web3Service.sendTip(data.author, data.id);
-            }}
-          />
+          <div className="flex justify-between w-full py-4 mt-4 border-t-2">
+            <div>
+              <p className="font-mono text-xs text-gray-400">
+                By: {data.author}
+              </p>
+              <p className="font-mono text-xs text-gray-400">
+                {new Date(data.time).toLocaleDateString("en-US")}
+                {"   "}
+                {new Date(data.time).toLocaleTimeString("en-US")}
+              </p>
+            </div>
+            <ActionButton
+              text="Tip"
+              clickHandler={() => {
+                Web3Service.sendTip(data.author, data.id);
+              }}
+            />
+          </div>
         </div>
       </div>
     );
