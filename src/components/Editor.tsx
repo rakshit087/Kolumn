@@ -20,7 +20,7 @@ const MyEditor = (Props: Props) => {
           version: "2.12.4",
         }}
       />
-      <div id={Props.id} className={Props.className}></div>
+      <div id={Props.id} className={Props.className}/>
     </>
   );
 };
