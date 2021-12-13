@@ -38,10 +38,10 @@ const App: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar connected={connected} />
-      <div className="w-screen px-4 flex flex-col justify-center font-merriweather items-center md:px-20 lg:px-40">
+      <div className="flex flex-col items-center justify-center w-screen px-4 font-merriweather md:px-20 lg:px-40">
         {/* Title */}
         <input
-          className="w-full max-w-6xl outline-none text-4xl my-10"
+          className="w-full max-w-6xl my-10 text-4xl outline-none"
           placeholder="Title"
           onChange={(e) => {
             setTitle(e.target.value);
@@ -49,7 +49,7 @@ const App: NextPage = () => {
         ></input>
         {/* Text Editor */}
         <div
-          className="w-full text-lg leading-7 md:text-xl md:leading-8 flex flex-col items-center justify-between "
+          className="flex flex-col items-center justify-between w-full text-lg leading-7 md:text-xl md:leading-8 "
           style={{ minHeight: "70vh" }}
         >
           <MyEditor
@@ -58,7 +58,7 @@ const App: NextPage = () => {
             setContent={setContent}
           />
           <button
-            className="bg-frgrnd text-bkgrnd hover:bg-bkgrnd hover:text-frgrnd flex justify-center items-center w-14 h-14 text-3xl my-10 rounded-full transition-colors"
+            className="flex items-center justify-center my-10 text-3xl transition-colors rounded-full bg-frgrnd text-bkgrnd hover:bg-bkgrnd hover:text-frgrnd w-14 h-14"
             onClick={() => {
               if (title.length != 0 && content.length != 0)
                 Web3Service.postKolumn(title, content);

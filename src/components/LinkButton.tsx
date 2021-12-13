@@ -9,7 +9,7 @@ interface Props {
 const LinkButton = (props: Props) => {
   return (
     <Link href={props.link}>
-      <button className="w-32 h-9 font-poppins text-white bg-frgrnd">
+      <button className="w-32 text-white h-9 font-poppins bg-frgrnd">
         {props.text}
       </button>
     </Link>

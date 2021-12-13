@@ -1,13 +1,12 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Blocks from "editorjs-blocks-react-renderer";
 //Importing Layouts
 import NavBar from "../layouts/Navbar";
 //Importing Web3 Services
 import { Web3Service } from "../services/Web3Service";
 import Loading from "../components/Loading";
-import { title } from "process";
 import ActionButton from "../components/ActionButton";
 
 const Kolumn: NextPage = () => {
@@ -60,9 +59,9 @@ const Kolumn: NextPage = () => {
     return (
       <div>
         <NavBar connected={connected} />
-        <div className="w-screen px-4 flex flex-col justify-center items-center md:px-20 lg:px-80 transition-all">
-          <div className="max-w-6xl w-full text-lg leading-7 md:leading-8">
-            <h1 className="w-full max-w-6xl outline-none text-4xl font-merriweather my-10">
+        <div className="flex flex-col items-center justify-center w-screen px-4 transition-all md:px-20 lg:px-80">
+          <div className="w-full max-w-6xl text-lg leading-7 md:leading-8">
+            <h1 className="w-full max-w-6xl my-10 text-4xl outline-none font-merriweather">
               {data.title}
             </h1>
             <Blocks data={data.content} />

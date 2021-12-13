@@ -40,7 +40,7 @@ const LatestKolumns = () => {
         );
       })}
       <div
-        className="w-full justify-center"
+        className="justify-center w-full"
         style={morePages ? { display: "flex" } : { display: "none" }}
       >
         <ActionButton

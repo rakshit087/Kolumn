@@ -1,9 +1,9 @@
 const NotFound = () => {
   return (
-    <div className="h-screen w-screen bg-bkgrnd flex flex-col justify-center items-center text-center px-4">
+    <div className="flex flex-col items-center justify-center w-screen h-screen px-4 text-center bg-bkgrnd">
       <p className="text-3xl">MetaMask Not Found in your Browser</p>
       <a href="https://metamask.io/download">
-        <div className="mt-10 bg-frgrnd text-bkgrnd w-60 h-14 flex justify-center items-center cursor-pointer">
+        <div className="flex items-center justify-center mt-10 cursor-pointer bg-frgrnd text-bkgrnd w-60 h-14">
           Download MetaMask
         </div>
       </a>

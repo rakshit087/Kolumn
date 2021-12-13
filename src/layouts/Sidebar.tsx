@@ -3,9 +3,9 @@ import LinkButton from "../components/LinkButton";
 const Sidebar = () => {
   return (
     <div className="sticky top-20 hidden md:flex md:flex-col items-end border-l-2 md:w-64 lg:w-72 b-l h-[calc(100vh-5rem)]">
-      <div className="bg-bkgrnd w-56 lg:w-60 my-10 py-8 px-4">
+      <div className="w-56 px-4 py-8 my-10 bg-bkgrnd lg:w-60">
         <p className="font-mono text-sm">Write on Konnect</p>
-        <ul className="list-disc px-8 my-5 font-serif">
+        <ul className="px-8 my-5 font-serif list-disc">
           <li>Own your Articles</li>
           <li>Earn Crypto!</li>
         </ul>
