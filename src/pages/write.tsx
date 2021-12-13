@@ -61,11 +61,10 @@ const App: NextPage = () => {
           <button
             className="flex items-center justify-center my-10 text-3xl transition-colors rounded-full bg-frgrnd text-bkgrnd hover:bg-bkgrnd hover:text-frgrnd w-14 h-14"
             onClick={() => {
-              console.log(content);
-              // if (title.length != 0 && content.length != 0)
-              //   Web3Service.postKolumn(title, content);
-              // // @TODO:Add a tost here
-              // else console.log("Please Enter Title and Content");
+              if (title.length != 0 && content.length != 0)
+                Web3Service.postKolumn(title, content);
+              // @TODO:Add a tost here
+              else console.log("Please Enter Title and Content");
             }}
           >
             <FiMail />
