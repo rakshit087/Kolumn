@@ -10,7 +10,7 @@ export class EditorWrapper extends React.PureComponent<WrapperProps> {
   /**
    * Editor instance
    */
-  public editor: EditorJS;
+  public editor: any;
 
   /**
    * Node to append ref
@@ -51,11 +51,7 @@ export class EditorWrapper extends React.PureComponent<WrapperProps> {
   }
 
   handleChange = async () => {
-    const { onChange, onData } = this.props;
-    if (onChange && typeof onChange === "function") {
-      onChange();
-    }
-
+    const { onData } = this.props;
     if (onData && typeof onData === "function") {
       this.emitDataEvent(onData);
     }
