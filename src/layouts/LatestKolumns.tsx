@@ -1,20 +1,8 @@
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import ActionButton from "../components/ActionButton";
 import Loading from "../components/Loading";
 import WideKol from "../components/WideKol";
 import { Web3Service } from "../services/Web3Service";
-
-// try {
-//   Web3Service.getLatestKolumns(page).then((kol) => {
-//     setData((prev: any) => [...prev, kol]);
-//     console.log(kol);
-//     if (kol.length == 10) setMorePages(true);
-//     else setMorePages(false);
-//   });
-// } catch {
-//   setMorePages(false);
-// }
 
 const LatestKolumns = () => {
   const [data, setData] = useState<any>([]);
