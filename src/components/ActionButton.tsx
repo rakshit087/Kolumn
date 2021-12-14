@@ -8,7 +8,7 @@ interface Props {
 const ActionButton = (props: Props) => {
   return (
     <button
-      className="w-32 text-white h-9 rounded-2xl font-poppins bg-frgrnd"
+      className="w-32 text-white h-9 rounded-2xl bg-frgrnd font-poppins"
       onClick={props.clickHandler}
     >
       {props.text}

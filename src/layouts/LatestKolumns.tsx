@@ -5,16 +5,35 @@ import Loading from "../components/Loading";
 import WideKol from "../components/WideKol";
 import { Web3Service } from "../services/Web3Service";
 
+// try {
+//   Web3Service.getLatestKolumns(page).then((kol) => {
+//     setData((prev: any) => [...prev, kol]);
+//     console.log(kol);
+//     if (kol.length == 10) setMorePages(true);
+//     else setMorePages(false);
+//   });
+// } catch {
+//   setMorePages(false);
+// }
+
 const LatestKolumns = () => {
-  const [data, setData] = useState<any>(undefined);
+  const [data, setData] = useState<any>([]);
   const [page, setPage] = useState<number>(1);
-  const [morePages, setMorePages] = useState<Boolean>(true);
+  const [morePages, setMorePages] = useState<Boolean>(false);
+
   useEffect(() => {
-    Web3Service.getLatestKolumns(1).then((kol) => {
-      setData(kol);
-      if (kol.length == 10) setMorePages(true);
-    });
-  }, []);
+    Web3Service.getLatestKolumns(page)
+      .then((kol: any) => {
+        let tempData = data;
+        tempData = tempData.concat(kol);
+        setData(tempData);
+        if (kol.length == 10) setMorePages(true);
+      })
+      .catch(() => {
+        setMorePages(false);
+      });
+  }, [page]);
+
   return data == undefined ? (
     <div className="flex justify-center md:w-11/12">
       <Loading />
@@ -27,7 +46,6 @@ const LatestKolumns = () => {
           .data.text.slice(0, 200);
         content = content.replace(/<[^>]*>/g, " ");
         content = content.replace(/&nbsp;/g, " ");
-        console.log(kol.timestamp);
         return (
           <WideKol
             key={index}
@@ -40,17 +58,13 @@ const LatestKolumns = () => {
         );
       })}
       <div
-        className="justify-center w-full"
+        className="justify-center w-full mb-5"
         style={morePages ? { display: "flex" } : { display: "none" }}
       >
         <ActionButton
           text="Load More"
           clickHandler={() => {
             setPage(page + 1);
-            Web3Service.getLatestKolumns(page).then((kol) => {
-              setData((prev: any) => [...prev, kol]);
-              if (kol.length == 10) setMorePages(true);
-            });
           }}
         />
       </div>
