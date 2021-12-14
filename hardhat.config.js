@@ -14,6 +14,10 @@ module.exports = {
       url: "HTTP://127.0.0.1:7545",
       accounts: [LOCAL_PRIVATE_KEY],
     },
+    matic: {
+      url: "https://rpc-mumbai.maticvigil.com",
+      accounts: [PRIVATE_KEY],
+    },
   },
   paths: {
     sources: "./src/contracts",

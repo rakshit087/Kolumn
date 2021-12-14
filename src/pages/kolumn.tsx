@@ -80,7 +80,7 @@ const Kolumn: NextPage = () => {
             <ActionButton
               text="Tip"
               clickHandler={() => {
-                Web3Service.sendTip(data.author, data.id);
+                // Web3Service.sendTip(data.author, data.id);
               }}
             />
           </div>
