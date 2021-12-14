@@ -72,10 +72,9 @@ contract KolumnKontract {
         }
     }
 
-    //Pay Author
+    //Tip Author
     function sendTip(address payable _author, uint256 _id) public payable {
-        (bool sent, bytes memory data) = _author.call{value: msg.value}("");
-        require(sent, "Failed to send Ether");
+        _author.transfer(msg.value);
         kolumns[_id].tips += msg.value;
     }
 }
