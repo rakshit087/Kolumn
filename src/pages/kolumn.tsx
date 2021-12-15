@@ -8,7 +8,6 @@ import NavBar from "../layouts/Navbar";
 import { Web3Service } from "../services/Web3Service";
 import Loading from "../components/Loading";
 import SendTipsButton from "../components/SendTipsButton";
-import { ethers } from "ethers";
 
 const Kolumn: NextPage = () => {
   interface KolumnData {
@@ -23,7 +22,7 @@ const Kolumn: NextPage = () => {
   const router = useRouter();
   const [connected, setConnected] = useState<Boolean>(true);
   const [data, setData] = useState<undefined | KolumnData>(undefined);
-  const [amount, setAmount] = useState<number>(0);
+
   useEffect(() => {
     if (!router.isReady) return;
     const kid =

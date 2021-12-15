@@ -7,7 +7,7 @@ interface Props {
   tips: number;
 }
 
-const sendTipsButton = (props: Props) => {
+const SendTipsButton = (props: Props) => {
   const [sendTipState, setSendTipState] = useState<Boolean>(false);
   const [amount, setAmount] = useState<number>(0);
   return (
@@ -49,4 +49,4 @@ const sendTipsButton = (props: Props) => {
   );
 };
 
-export default sendTipsButton;
+export default SendTipsButton;

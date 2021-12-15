@@ -13,11 +13,9 @@ const MyEditor = (props: Props) => {
         holder={props.id}
         onData={(data) => {
           props.setContent(JSON.stringify(data));
-          console.log(data);
         }}
         onChange={(data) => {
           props.setContent(JSON.stringify(data));
-          console.log(data);
         }}
         placeholder="Begin writing your amazing piece of art here ✨"
         data={props.content}
