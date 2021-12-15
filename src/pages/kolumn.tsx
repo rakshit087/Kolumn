@@ -7,7 +7,8 @@ import NavBar from "../layouts/Navbar";
 //Importing Web3 Services
 import { Web3Service } from "../services/Web3Service";
 import Loading from "../components/Loading";
-import ActionButton from "../components/ActionButton";
+import SendTipsButton from "../components/SendTipsButton";
+import { ethers } from "ethers";
 
 const Kolumn: NextPage = () => {
   interface KolumnData {
@@ -16,11 +17,13 @@ const Kolumn: NextPage = () => {
     content: any;
     time: Date;
     author: string;
+    tips: number;
   }
 
   const router = useRouter();
   const [connected, setConnected] = useState<Boolean>(true);
   const [data, setData] = useState<undefined | KolumnData>(undefined);
+  const [amount, setAmount] = useState<number>(0);
   useEffect(() => {
     if (!router.isReady) return;
     const kid =
@@ -37,6 +40,7 @@ const Kolumn: NextPage = () => {
             content: JSON.parse(kolumn.content),
             time: new Date(parseInt(kolumn.timestamp)),
             author: kolumn.author,
+            tips: parseInt(kolumn.tips),
           });
         });
       } else {
@@ -77,12 +81,7 @@ const Kolumn: NextPage = () => {
                 {new Date(data.time).toLocaleTimeString("en-US")}
               </p>
             </div>
-            <ActionButton
-              text="Tip"
-              clickHandler={() => {
-                // Web3Service.sendTip(data.author, data.id);
-              }}
-            />
+            <SendTipsButton tips={data.tips} kolumnID={data.id} />
           </div>
         </div>
       </div>
