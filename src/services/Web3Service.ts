@@ -67,7 +67,7 @@ export const Web3Service = {
     return data;
   },
 
-  sendTip: async (author: string, id: number) => {
+  sendTip: async (id: number, amount: number) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(
@@ -75,7 +75,9 @@ export const Web3Service = {
       KolumnArtifact.abi,
       signer
     );
-    const txResponse = await contract.sendTip(author, id);
+    const txResponse = await contract.sendTip(id, {
+      value: ethers.utils.parseUnits(amount.toString(), "ether"),
+    });
     const txRecipt = await txResponse.wait();
     console.log(txRecipt);
   },

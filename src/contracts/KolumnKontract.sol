@@ -73,8 +73,8 @@ contract KolumnKontract {
     }
 
     //Tip Author
-    function sendTip(address payable _author, uint256 _id) public payable {
-        _author.transfer(msg.value);
+    function sendTip(uint256 _id) public payable {
+        kolumns[_id].author.transfer(msg.value);
         kolumns[_id].tips += msg.value;
     }
 }
