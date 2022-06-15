@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 import KolumnArtifact from "../artifacts/src/contracts/KolumnKontract.sol/KolumnKontract.json";
 
 declare let window: any;
-const contractAddress = "0x9aDFe2aba6f7f59e1F37c12Ba7F0d05Ffb8f444C";
+const contractAddress = "0xb2609543d94754076ab561da112776d24cfb072b";
 
 export const Web3Service = {
   //Connect to Metamask
