@@ -8,7 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.6.0",
+    "@openzeppelin/contracts": "^4.7.2",
     "@stfy/react-editor.js": "^1.0.3",
     "dotenv": "^16.0.1",
     "editorjs-blocks-react-renderer": "^1.2.1",
@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.0",
-    "@nomiclabs/hardhat-waffle": "^2.0.0",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
     "@tailwindcss/jit": "^0.1.18",
     "@types/node": "16.11.9",
     "@types/react": "17.0.36",
