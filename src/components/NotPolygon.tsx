@@ -19,7 +19,7 @@ const NotFound = () => {
               params: [
                 {
                   chainName: "Polygon Amoy",
-                  chainId: "0x80002",
+                  chainId: "80002",
                   nativeCurrency: {
                     name: "MATIC",
                     symbol: "MATIC",
