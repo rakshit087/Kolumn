@@ -33,8 +33,9 @@ function MyApp({ Component }: AppProps) {
   if (meta == undefined) return <Loading />;
   else if (meta) {
     if (poly == undefined) return <Loading />;
-    if (poly) return <Component />;
-    else return <NotPolygon />;
+    // if (poly) 
+    return <Component />;
+    // else return <NotPolygon />;
   } else return <NotFound />;
 }
 
