@@ -1,15 +1,10 @@
-# Basic Sample Hardhat Project
+# Kolumn
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+Kolumn is a platform for writers to share their work on Blockchain.
+It basically means they make their work immutable, and share it in it's purest form without any censorship.
+Another thing which makes Kolumn applealing to writers is the fact that they truly own their work, no central authorization is making money out of it, there are no ads, no spyware, it's just pure content.
+Users can support Authors by sending them crypto-currency which again is done without cutting any perchantage from the transaction (Other than network fee).
 
-Try running some of the following tasks:
+### Updates
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+30/04/2024: migrated to Polygon Amoy Testnet

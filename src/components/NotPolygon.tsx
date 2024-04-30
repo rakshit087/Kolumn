@@ -18,15 +18,15 @@ const NotFound = () => {
               method: "wallet_addEthereumChain",
               params: [
                 {
-                  chainName: "Polygon Testnet Mumbai",
-                  chainId: "0x13881",
+                  chainName: "Polygon Amoy",
+                  chainId: "0x80002",
                   nativeCurrency: {
                     name: "MATIC",
                     symbol: "MATIC",
                     decimals: 18,
                   },
-                  rpcUrls: ["https://rpc-mumbai.maticvigil.com"],
-                  blockExplorerUrls: ["https://mumbai.polygonscan.com/"],
+                  rpcUrls: ["https://rpc-amoy.polygon.technology/"],
+                  blockExplorerUrls: ["https://www.oklink.com/amoy"],
                 },
               ],
             });
